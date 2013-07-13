@@ -6,6 +6,8 @@ Will and Bryce Game Jam
 Installation
 ------------
 
+**OSX**
+
 So you want to rvm, eh? Well on OS X 10.8.x you will run into problems! 
 
 1. Install homebrew
@@ -27,3 +29,13 @@ brew install libxslt
 brew install libksba
 brew install openssl
 ```
+
+
+**Windows**
+
+1. Install ruby 1.9.3 from http://rubyinstaller.org/downloads/
+2. Install github for windows http://windows.github.com/
+3. Pull the repository
+4. `gem install bundler`
+5. `bundle install`
+6. `ruby main.rb`
