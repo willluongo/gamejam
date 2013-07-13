@@ -8,6 +8,7 @@ class GameWindow < Gosu::Window
     super 1280, 1024, false
     @game_state = :menu
     @main_menu = Menu.new(self, "assets/menu.png", 2)
+    @cursor = Gosu::Image.new(self, 'assets/cursor.png')
     self.caption = "Game Jam!"
   end
   
@@ -26,6 +27,8 @@ class GameWindow < Gosu::Window
   	if @game_state == :menu
   		@main_menu.draw
   	end
+
+  	@cursor.draw self.mouse_x, self.mouse_y, 0
   end
 
   def button_down (id)
