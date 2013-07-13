@@ -7,7 +7,9 @@ class GameWindow < Gosu::Window
   def initialize
     super 1280, 1024, false
     @game_state = :menu
-    @main_menu = Menu.new(self, "assets/menu.png", 2)
+    quit = lambda { self.close }
+    play = lambda { @game_state = :play}
+    @main_menu = Menu.new(self, "assets/menu.png", [play, quit])
     @cursor = Gosu::Image.new(self, 'assets/cursor.png')
     self.caption = "Game Jam!"
   end
@@ -18,23 +20,25 @@ class GameWindow < Gosu::Window
   	when :menu
   		@main_menu.update
   	end
-
-
   end
   
   def draw
   	# rendering stuff goes here
-  	if @game_state == :menu
+  	case @game_state
+  	when :menu
   		@main_menu.draw
   	end
-
   	@cursor.draw self.mouse_x, self.mouse_y, 5
   end
 
   def button_down (id)
-  	if id == Gosu::MsLeft
+  	case id
+  	when Gosu::MsLeft
   		@main_menu.clicked
+  	when Gosu::KbEscape
+  		@game_state = :menu
   	end
+
   end
 end
 

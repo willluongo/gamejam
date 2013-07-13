@@ -1,15 +1,15 @@
 class Menu
-    def initialize (window, image, options)
+    def initialize (window, image, callbacks)
         @window = window
         @items = Array.new
 
         @image_y = 0
         @images = Gosu::Image::load_tiles(window, image, 300, 100, false)
-        quit = lambda { @window.close }
-        play = lambda { puts "Hell yeah!"}
-        @callbacks = [play, quit]
+
+        @callbacks = callbacks
+        options = callbacks.length
         (0..options - 1).each do | i |
-        	add_item(@images[i], 100, @image_y += 100, 3, @callbacks[i], @images[i+options])
+        	add_item(@images[i], @window.width / 3, @image_y += 100, 3, @callbacks[i], @images[i+options])
         end
     end
 
