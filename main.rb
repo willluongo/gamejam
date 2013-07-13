@@ -7,9 +7,7 @@ class GameWindow < Gosu::Window
   def initialize
     super 1280, 1024, false
     @game_state = :menu
-    @main_menu = Menu.new(self)
-    @main_menu.add_item("Play")
-    @main_menu.add_item("Quit")
+    @main_menu = Menu.new(self, "assets/menu.png", 2)
     self.caption = "Game Jam!"
   end
   
@@ -27,6 +25,12 @@ class GameWindow < Gosu::Window
   	# rendering stuff goes here
   	if @game_state == :menu
   		@main_menu.draw
+  	end
+  end
+
+  def button_down (id)
+  	if id == Gosu::MsLeft
+  		@main_menu.clicked
   	end
   end
 end
