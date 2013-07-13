@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'gosu'
 require './lib/menu'
+require './lib/player'
 
 
 class GameWindow < Gosu::Window
@@ -12,6 +13,7 @@ class GameWindow < Gosu::Window
     @main_menu = Menu.new(self, "assets/menu.png", [play, quit])
     @cursor = Gosu::Image.new(self, 'assets/cursor.png')
     self.caption = "Game Jam!"
+    @player_1 = Player.new("Player 1", "assets/char1.png", 100, 100, self)
   end
   
   def update
@@ -27,6 +29,8 @@ class GameWindow < Gosu::Window
   	case @game_state
   	when :menu
   		@main_menu.draw
+  	when :play
+  		@player_1.draw
   	end
   	@cursor.draw self.mouse_x, self.mouse_y, 5
   end
@@ -37,6 +41,14 @@ class GameWindow < Gosu::Window
   		@main_menu.clicked
   	when Gosu::KbEscape
   		@game_state = :menu
+  	when Gosu::KbRight
+  		@player_1.go_right
+  	when Gosu::KbLeft
+  		@player_1.go_left
+  	when Gosu::KbUp
+  		@player_1.go_up
+  	when Gosu::KbDown
+  		@player_1.go_down
   	end
 
   end
