@@ -28,7 +28,7 @@ class GameWindow < Gosu::Window
   		@main_menu.draw
   	end
 
-  	@cursor.draw self.mouse_x, self.mouse_y, 0
+  	@cursor.draw self.mouse_x, self.mouse_y, 5
   end
 
   def button_down (id)
