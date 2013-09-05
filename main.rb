@@ -2,7 +2,11 @@ require 'bundler/setup'
 require 'gosu'
 require './lib/menu'
 require './lib/player'
+require 'logger'
 
+log = Logger.new(STDOUT)
+log.level = Logger::DEBUG
+log.info("Starting game!")
 
 class GameWindow < Gosu::Window
   def initialize
@@ -29,10 +33,10 @@ class GameWindow < Gosu::Window
   	case @game_state
   	when :menu
   		@main_menu.draw
+  		@cursor.draw self.mouse_x, self.mouse_y, 5
   	when :play
   		@player_1.draw
   	end
-  	@cursor.draw self.mouse_x, self.mouse_y, 5
   end
 
   def button_down (id)
