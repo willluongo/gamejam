@@ -3,6 +3,8 @@ W&B Game Jam
 
 Will and Bryce Game Jam
 
+[![Dependency Status](https://gemnasium.com/willluongo/gamejam.png)](https://gemnasium.com/willluongo/gamejam)
+
 Installation
 ------------
 
